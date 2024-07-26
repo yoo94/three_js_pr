@@ -6,6 +6,7 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        clean: true,
     },
     module: {
         rules: [
@@ -15,6 +16,10 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                 },
+            },
+            {
+                test: /\.(png|jpe?g|gif|jpg)$/i,
+                type: 'asset/resource',
             },
         ],
     },
