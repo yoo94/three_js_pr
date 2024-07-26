@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { TextureLoader } from 'three';
+import woodTextureImage from './textures/wood.jpg';
 
 const threeFunc = function () {
     const scene = new THREE.Scene();
@@ -10,18 +10,21 @@ const threeFunc = function () {
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
+    // 배경색 설정
+    renderer.setClearColor(0xffffff, 1);
+
     // 텍스처 로더
-    const textureLoader = new TextureLoader();
-    const woodTexture = textureLoader.load('./src/textures/woodTexture.png'); // 나무 텍스처 경로 설정
+    const textureLoader = new THREE.TextureLoader();
+    const woodTexture = textureLoader.load(woodTextureImage);
 
     // 땅 생성
     const groundGeometry = new THREE.PlaneGeometry(40, 40);
-    const groundMaterial = new THREE.MeshBasicMaterial({ color: 0x228B92, side: THREE.DoubleSide });
+    const groundMaterial = new THREE.MeshBasicMaterial({ color: 0x228B22, side: THREE.DoubleSide });
     const ground = new THREE.Mesh(groundGeometry, groundMaterial);
     ground.rotation.x = -Math.PI / 2;
     scene.add(ground);
-    // 1층 집 바디
 
+    // 1층 집 바디
     const firstFloorGeometry = new THREE.BoxGeometry(10, 5, 10);
     const firstFloorMaterial = new THREE.MeshBasicMaterial({ map: woodTexture });
     const firstFloor = new THREE.Mesh(firstFloorGeometry, firstFloorMaterial);
