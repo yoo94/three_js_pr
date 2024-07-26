@@ -12,11 +12,11 @@ const threeFunc = function () {
 
     // 텍스처 로더
     const textureLoader = new TextureLoader();
-    const woodTexture = textureLoader.load('../textures/woodTexture.png'); // 나무 텍스처 경로 설정
+    const woodTexture = textureLoader.load('./src/textures/woodTexture.png'); // 나무 텍스처 경로 설정
 
     // 땅 생성
     const groundGeometry = new THREE.PlaneGeometry(40, 40);
-    const groundMaterial = new THREE.MeshBasicMaterial({ color: 0x228B22, side: THREE.DoubleSide });
+    const groundMaterial = new THREE.MeshBasicMaterial({ color: 0x228B92, side: THREE.DoubleSide });
     const ground = new THREE.Mesh(groundGeometry, groundMaterial);
     ground.rotation.x = -Math.PI / 2;
     scene.add(ground);
